@@ -1,8 +1,3 @@
- /*
-  * Author: Emmanuel Odunlade 
-  * Complete Project Details https://randomnerdtutorials.com          1277333
-  */
-  
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
