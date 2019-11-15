@@ -121,9 +121,7 @@ void loop() {
           Serial.println("Waiting...");
   
   // thingspeak needs minimum 15 sec delay between updates, i've set it to 30 seconds
-  delay(100);
-
-    
+  delay(100);   
     
   }
  
@@ -288,72 +286,60 @@ void diffDataAction(String nowT, String later, String weatherType) {
 }
 
 String SendHTML(float Temperaturestat,float Humiditystat){
-  String ptr = "<!DOCTYPE html> <html>\n";
-  ptr +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
-  ptr +="<meta http-equiv=\"refresh\" content=\"2\" >\n";
-  ptr +="<link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,600\" rel=\"stylesheet\">\n";
+   String ptr = "<!DOCTYPE html> <html>\n";
+   ptr +="<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
+   ptr +="<meta http-equiv=\"refresh\" content=\"2\" >\n";
+   ptr +="<link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,600\" rel=\"stylesheet\">\n";
    ptr +="<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n";
-  ptr +="<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\">\n";
-  ptr +="</script>\n";
-  ptr +="<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\">\n";
-  ptr +="</script>\n";
-  ptr +="<title>ESP8266 Weather Report</title>\n";
-  ptr +="<style>html { font-family: 'Open Sans', sans-serif; display: block; margin: 0px auto; text-align: center;color: #333333;}\n";
-  ptr +="body{margin-top: 50px;}\n";
-  ptr +="h1 {margin: 50px auto 30px;}\n";
-  ptr +=".side-by-side{display: inline-block;vertical-align: middle;position: relative;}\n";
-  ptr +=".humidity-icon{background-color: #3498db;width: 30px;height: 30px;border-radius: 50%;line-height: 36px;}\n";
-  ptr +=".humidity-text{font-weight: 600;padding-left: 15px;font-size: 19px;width: 160px;text-align: left;}\n";
-  ptr +=".humidity{font-weight: 300;font-size: 60px;color: #3498db;}\n";
-  ptr +=".temperature-icon{background-color: #f39c12;width: 30px;height: 30px;border-radius: 50%;line-height: 40px;}\n";
-  ptr +=".temperature-text{font-weight: 600;padding-left: 15px;font-size: 19px;width: 160px;text-align: left;}\n";
-  ptr +=".temperature{font-weight: 300;font-size: 60px;color: #f39c12;}\n";
-  ptr +=".superscript{font-size: 17px;font-weight: 600;position: absolute;right: -20px;top: 15px;}\n";
-  ptr +=".data{padding: 10px;}\n";
-  ptr +="</style>\n";
- ptr +="<style>button { position: fixed; bottom: 10%; right: 42%; } </style>\n";
-ptr +="<style>\n";
-ptr +=".navbar { overflow: hidden; background-color: #333;   position: fixed; bottom: 0; right: 42%; width: 10; }\n";
-
-ptr +=".navbar a { float: left; display: block; color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }\n";
-
-ptr +=".navbar a:hover { background-color: #ddd; color: black; }\n";
-
-ptr +=".navbar a.active { background-color: #4CAF50; color: white; }\n";
-
-ptr +=".navbar .icon { display: none; }\n";
-
-ptr +="@media screen and (max-width: 600px) {\n";
- ptr +=".navbar a:not(:first-child) {display: none;}\n";
-  ptr+=".navbar a.icon { float: centre; display: block; }\n";
-ptr +="}\n";
-
-ptr +="@media screen and (max-width: 600px) {\n";
- ptr += ".navbar.responsive .icon { position: absolute; right: 50%; bottom:0; }\n";
-  ptr +=".navbar.responsive a { float: none; display: block; text-align: left; }\n";
-
-ptr +="}\n";
-ptr +="</style>\n";
- 
-  ptr +="<script>\n";
-  ptr +="setInterval(loadDoc,200);\n";
-  ptr +="function loadDoc() {\n";
-  ptr +="var xhttp = new XMLHttpRequest();\n";
-  ptr +="xhttp.onreadystatechange = function() {\n";
-  ptr +="if (this.readyState == 4 && this.status == 200) {\n";
-  ptr +="document.getElementById(\"webpage\").innerHTML =this.responseText}\n";
-  ptr +="};\n";
-  ptr +="xhttp.open(\"GET\", \"/\", true);\n";
-  ptr +="xhttp.send();\n";
-  ptr +="}\n";
-  ptr +="</script>\n";
-
-  ptr +="</head>\n";
-  ptr +="<body>\n";
-
-  
-   ptr +="<div id=\"webpage\">\n";
-   
+   ptr +="<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\">\n";
+   ptr +="</script>\n";
+   ptr +="<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\">\n";
+   ptr +="</script>\n";
+   ptr +="<title>ESP8266 Weather Report</title>\n";
+   ptr +="<style>html { font-family: 'Open Sans', sans-serif; display: block; margin: 0px auto; text-align: center;color: #333333;}\n";
+   ptr +="body{margin-top: 50px;}\n";
+   ptr +="h1 {margin: 50px auto 30px;}\n";
+   ptr +=".side-by-side{display: inline-block;vertical-align: middle;position: relative;}\n";
+   ptr +=".humidity-icon{background-color: #3498db;width: 30px;height: 30px;border-radius: 50%;line-height: 36px;}\n";
+   ptr +=".humidity-text{font-weight: 600;padding-left: 15px;font-size: 19px;width: 160px;text-align: left;}\n";
+   ptr +=".humidity{font-weight: 300;font-size: 60px;color: #3498db;}\n";
+   ptr +=".temperature-icon{background-color: #f39c12;width: 30px;height: 30px;border-radius: 50%;line-height: 40px;}\n";
+   ptr +=".temperature-text{font-weight: 600;padding-left: 15px;font-size: 19px;width: 160px;text-align: left;}\n";
+   ptr +=".temperature{font-weight: 300;font-size: 60px;color: #f39c12;}\n";
+   ptr +=".superscript{font-size: 17px;font-weight: 600;position: absolute;right: -20px;top: 15px;}\n";
+   ptr +=".data{padding: 10px;}\n";
+   ptr +="</style>\n";
+   ptr +="<style>button { position: fixed; bottom: 10%; right: 42%; } </style>\n";
+   ptr +="<style>\n";
+   ptr +=".navbar { overflow: hidden; background-color: #333;   position: fixed; bottom: 0; right: 42%; width: 10; }\n";
+   ptr +=".navbar a { float: left; display: block; color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }\n";
+   ptr +=".navbar a:hover { background-color: #ddd; color: black; }\n";
+   ptr +=".navbar a.active { background-color: #4CAF50; color: white; }\n";
+   ptr +=".navbar .icon { display: none; }\n";
+   ptr +="@media screen and (max-width: 600px) {\n";
+   ptr +=".navbar a:not(:first-child) {display: none;}\n";
+   ptr+=".navbar a.icon { float: centre; display: block; }\n";
+   ptr +="}\n";
+   ptr +="@media screen and (max-width: 600px) {\n";
+   ptr += ".navbar.responsive .icon { position: absolute; right: 50%; bottom:0; }\n";
+   ptr +=".navbar.responsive a { float: none; display: block; text-align: left; }\n";
+   ptr +="}\n";
+   ptr +="</style>\n"; 
+   ptr +="<script>\n";
+   ptr +="setInterval(loadDoc,200);\n";
+   ptr +="function loadDoc() {\n";
+   ptr +="var xhttp = new XMLHttpRequest();\n";
+   ptr +="xhttp.onreadystatechange = function() {\n";
+   ptr +="if (this.readyState == 4 && this.status == 200) {\n";
+   ptr +="document.getElementById(\"webpage\").innerHTML =this.responseText}\n";
+   ptr +="};\n";
+   ptr +="xhttp.open(\"GET\", \"/\", true);\n";
+   ptr +="xhttp.send();\n";
+   ptr +="}\n";
+   ptr +="</script>\n";
+   ptr +="</head>\n";
+   ptr +="<body>\n";  
+   ptr +="<div id=\"webpage\">\n";   
    ptr +="<h1>ESP8266 Weather Report</h1>\n";
    ptr +="<div class=\"data\">\n";
    ptr +="<div class=\"side-by-side temperature-icon\">\n";
@@ -368,16 +354,11 @@ ptr +="</style>\n";
    ptr +="</div>\n";
    ptr +="<div class=\"side-by-side temperature-text\">Temperature</div>\n";
    ptr +="<div class=\"side-by-side temperature\">";
-   ptr +=(int)Temperaturestat;
-
-
- 
-   
+   ptr +=(int)Temperaturestat;   
    ptr +="<span class=\"superscript\">°C</span></div>\n";
-             ptr +="</div>\n";
-                ptr +="<div class=\"container\">\n";
-             ptr +="<a href=\"https://thingspeak.com/channels/756646/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15\" class=\"btn btn-info\" role=\"button\">temperature</a>\n";
-  
+   ptr +="</div>\n";
+   ptr +="<div class=\"container\">\n";
+   ptr +="<a href=\"https://thingspeak.com/channels/756646/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15\" class=\"btn btn-info\" role=\"button\">temperature</a>\n";  
    ptr +="<div class=\"data\">\n";
    ptr +="<div class=\"side-by-side humidity-icon\">\n";
    ptr +="<svg version=\"1.1\" id=\"Layer_2\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\"; width=\"12px\" height=\"17.955px\" viewBox=\"0 0 13 17.955\" enable-background=\"new 0 0 13 17.955\" xml:space=\"preserve\">\n";
@@ -387,38 +368,22 @@ ptr +="</style>\n";
    ptr +="</div>\n";
    ptr +="<div class=\"side-by-side humidity-text\">Humidity</div>\n";
    ptr +="<div class=\"side-by-side humidity\">";
-    ptr +=(int)Humiditystat;
-
-    
-  
-   
+   ptr +=(int)Humiditystat;   
    ptr +="<span class=\"superscript\">%</span></div>\n";
    ptr +="</div>\n";
-    ptr +="<div class=\"container\">\n";
-  ptr +="<a href=\"https://thingspeak.com/channels/756646/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15\" class=\"btn btn-info\" role=\"button\">humidity</a>\n";
-
-
-
-  
-    
-                ptr+="<div class=\"navbar\" id=\"myNavbar\">\n";
-  ptr+="<a  href=\"index.html\" class=\"active\">predict weather</a>\n";
- 
-
-ptr+="</div>\n";
-
-  ptr +="</div>\n";
- 
-  
- ptr+="<div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">\n";
- 
- ptr+="</div>\n";
-ptr+="<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\">\n";
-ptr+="</script>\n";
-
-  ptr +="</body>\n";
-  ptr +="</html>\n";
-  return ptr;
+   ptr +="<div class=\"container\">\n";
+   ptr +="<a href=\"https://thingspeak.com/channels/756646/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15\" class=\"btn btn-info\" role=\"button\">humidity</a>\n";
+   ptr+="<div class=\"navbar\" id=\"myNavbar\">\n";
+   ptr+="<a  href=\"index.html\" class=\"active\">predict weather</a>\n";
+   ptr+="</div>\n";
+   ptr +="</div>\n";  
+   ptr+="<div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">\n";  
+   ptr+="</div>\n";
+   ptr+="<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\">\n";
+   ptr+="</script>\n";
+   ptr +="</body>\n";
+   ptr +="</html>\n";
+   return ptr;
 }
 
 
@@ -426,7 +391,7 @@ ptr+="</script>\n";
 
 
 
-// !!! call web page http://api.openweathermap.org/data/2.5/forecast?id=1277333&APPID=b429c36fad5233e2e9a25c979f55b08c
+
 
 
 
