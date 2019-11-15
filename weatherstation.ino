@@ -59,15 +59,10 @@ void setup() {
 
   Serial.begin(9600);
   delay(100);
-
   pinMode(DHTPin, INPUT);
-
   dht.begin();
-
   text.reserve(JSON_BUFF_DIMENSION);
-
-
-
+  
   WiFi.begin(ssid, pass);
   Serial.println("connecting");
   while (WiFi.status() != WL_CONNECTED) {
@@ -161,7 +156,7 @@ void loop() {
       postStr += "&field2=";
       postStr += String(h);
       postStr += "\r\n\r\n";
-
+      
       client.print("POST /update HTTP/1.1\n");
       client.print("Host: api.thingspeak.com\n");
       client.print("Connection: close\n");
@@ -181,18 +176,11 @@ void loop() {
     client.stop();
 
     Serial.println("Waiting...");
-
     // thingspeak needs minimum 15 sec delay between updates, i've set it to 30 seconds
-
     delay(100);
   }
 
 }
-
-
-
-
-
 
 
 void handle_OnConnect() {
@@ -403,27 +391,19 @@ String SendHTML(float Temperaturestat, float Humiditystat) {
   ptr += "<style>button { position: fixed; bottom: 10%; right: 42%; } </style>\n";
   ptr += "<style>\n";
   ptr += ".navbar { overflow: hidden; background-color: #333;   position: fixed; bottom: 0; right: 42%; width: 10; }\n";
-
   ptr += ".navbar a { float: left; display: block; color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; }\n";
-
   ptr += ".navbar a:hover { background-color: #ddd; color: black; }\n";
-
   ptr += ".navbar a.active { background-color: #4CAF50; color: white; }\n";
-
   ptr += ".navbar .icon { display: none; }\n";
-
   ptr += "@media screen and (max-width: 600px) {\n";
   ptr += ".navbar a:not(:first-child) {display: none;}\n";
   ptr += ".navbar a.icon { float: centre; display: block; }\n";
   ptr += "}\n";
-
   ptr += "@media screen and (max-width: 600px) {\n";
   ptr += ".navbar.responsive .icon { position: absolute; right: 50%; bottom:0; }\n";
   ptr += ".navbar.responsive a { float: none; display: block; text-align: left; }\n";
-
   ptr += "}\n";
   ptr += "</style>\n";
-
   ptr += "<script>\n";
   ptr += "setInterval(loadDoc,200);\n";
   ptr += "function loadDoc() {\n";
@@ -436,13 +416,9 @@ String SendHTML(float Temperaturestat, float Humiditystat) {
   ptr += "xhttp.send();\n";
   ptr += "}\n";
   ptr += "</script>\n";
-
   ptr += "</head>\n";
   ptr += "<body>\n";
-
-
   ptr += "<div id=\"webpage\">\n";
-
   ptr += "<h1>IOT Weather Report</h1>\n";
   ptr += "<div class=\"data\">\n";
   ptr += "<div class=\"side-by-side temperature-icon\">\n";
@@ -458,15 +434,10 @@ String SendHTML(float Temperaturestat, float Humiditystat) {
   ptr += "<div class=\"side-by-side temperature-text\">Temperature</div>\n";
   ptr += "<div class=\"side-by-side temperature\">";
   ptr += (int)Temperaturestat;
-
-
-
-
   ptr += "<span class=\"superscript\">°C</span></div>\n";
   ptr += "</div>\n";
   ptr += "<div class=\"container\">\n";
   ptr += "<a href=\"https://thingspeak.com/channels/756646/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15\" class=\"btn btn-info\" role=\"button\">temperature</a>\n";
-
   ptr += "<div class=\"data\">\n";
   ptr += "<div class=\"side-by-side humidity-icon\">\n";
   ptr += "<svg version=\"1.1\" id=\"Layer_2\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\"; width=\"12px\" height=\"17.955px\" viewBox=\"0 0 13 17.955\" enable-background=\"new 0 0 13 17.955\" xml:space=\"preserve\">\n";
@@ -477,34 +448,18 @@ String SendHTML(float Temperaturestat, float Humiditystat) {
   ptr += "<div class=\"side-by-side humidity-text\">Humidity</div>\n";
   ptr += "<div class=\"side-by-side humidity\">";
   ptr += (int)Humiditystat;
-
-
-
-
   ptr += "<span class=\"superscript\">%</span></div>\n";
   ptr += "</div>\n";
   ptr += "<div class=\"container\">\n";
   ptr += "<a href=\"https://thingspeak.com/channels/756646/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15\" class=\"btn btn-info\" role=\"button\">humidity</a>\n";
-
-
-
-
-
   ptr += "<div class=\"navbar\" id=\"myNavbar\">\n";
   ptr += "<a  href=\"https://iot-weather-station-e8b5c.firebaseapp.com/\" class=\"active\">view weather</a>\n";
-
-
   ptr += "</div>\n";
-
   ptr += "</div>\n";
-
-
   ptr += "<div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">\n";
-
   ptr += "</div>\n";
   ptr += "<script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\">\n";
   ptr += "</script>\n";
-
   ptr += "</body>\n";
   ptr += "</html>\n";
   return ptr;
