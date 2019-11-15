@@ -119,7 +119,7 @@ void loop() {
   lcd.clear();
   serverr.handleClient();
 
-  lcd.print(F("Credits: DISPLAY ART"));
+  lcd.print(F("Credits: DISPLAY ART"));// for lcd library refer to https://github.com/Anush-DP/BigNumbers_I2C
   serverr.handleClient();
   chineseTextReveal(5, 2, "ANUSH DP"); // text should be 8 letters/characters long
   delay(1000);
